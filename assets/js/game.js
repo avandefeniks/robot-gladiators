@@ -51,24 +51,6 @@ var fight = function(enemy) {
           // if true, leave fight by breaking loop
           break;
       } 
-      
-    // // ask player if they'd like to fight or run
-    // var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-
-    // // if player picks "skip" confirm and then stop the loop
-    // if (promptFight === "skip" || promptFight === "SKIP") {
-    //   // confirm player wants to skip
-    //   var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-
-    //   // if yes (true), leave fight
-    //   if (confirmSkip) {
-    //     window.alert(playerInfo.name + ' has decided to skip this fight. Goodbye!');
-    //     // subtract money from playerInfo.money for skipping
-    //     playerInfo.money = Math.max(0, playerInfo.money - 10);
-    //     console.log("playerInfo.money", playerInfo.money)
-    //     break;
-    //   }
-    // }
 
     // generate random damage value based on player's attack power
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
@@ -179,21 +161,21 @@ var endGame = function() {
 var shop = function() {
   // ask player what they'd like to do
   var shopOptionPrompt = window.prompt(
-    'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
+    'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 to "REFILL", 2 to "UPGRADE", or 3 to "LEAVE." Make a choice.'
   );
-
+    
   // use switch case to carry out action
+  //change string to integer
+shopOptionPrompt = parseInt(shopOptionPrompt);
+
   switch (shopOptionPrompt) {
-    case 'REFILL':
-    case 'refill':
+    case 1:
       playerInfo.refillHealth();
       break;
-    case 'UPGRADE':
-    case 'upgrade':
+    case 2:
       playerInfo.upgradeAttack();
       break;
-    case 'LEAVE':
-    case 'leave':
+    case 3:
       window.alert('Leaving the store.');
 
       // do nothing, so function will end
